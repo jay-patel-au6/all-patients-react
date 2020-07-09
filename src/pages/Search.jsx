@@ -24,15 +24,14 @@ export default withRouter(class Search extends Component {
         event.preventDefault()
         this.props.history.push('/search')    // path to redirect after form submission
 
-        console.log(this.state.search, 'searching')
-
         let fetched = await fetch(`${this.props.server}/search?name=${this.state.search}`)
         let searchedPatients = await fetched.json()
-
-        console.log(searchedPatients)
-        
+            
         if(searchedPatients.length) this.setState({searchResult: searchedPatients})
-        else this.setState({nothingFound: 'Nothing found...!!!'})
+        else this.setState({
+            nothingFound: 'Nothing found...!!!',
+            searchResult: []
+        })
     }
 
     handleChange(event) {

@@ -10,4 +10,9 @@
 
 .searchResult {
     margin-top: 20px;
+    overflow-y: auto;
+    max-height: 1000px;
+    max-width: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
