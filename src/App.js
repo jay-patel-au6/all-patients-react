@@ -4,6 +4,7 @@ import {BrowserRouter, Route, NavLink, Switch, Redirect} from 'react-router-dom'
 
 import Navbar from './components/Navbar.jsx'
 import Home from './pages/Home.jsx'
+import Search from './pages/Search.jsx'
 import Statistics from './pages/Statistics.jsx';
 import AdmitNewForm from './pages/AdmitNewForm.jsx'
 import UpdateStatus from './pages/UpdateStatus.jsx'
@@ -27,11 +28,15 @@ class App extends Component {
 				<div className="App">
 					<Navbar>
 						<NavLink exact={true} to='/' className='btn btn-light NavLink'>Home</NavLink>
+						<NavLink exact={true} to='/search' className='btn btn-light NavLink'>Search</NavLink>
 						<NavLink exact={true} to='/statistics' className='btn btn-light NavLink'>Statistics</NavLink>
 					</Navbar>
 					<Switch>
 						<Route exact={true} path='/' render={
 							defaultProps => <Home {...defaultProps} admitted={this.state.admitted}/>	
+						}></Route>
+						<Route exact={true} path='/search' render={
+							defaultProps => <Search server={this.server}/>
 						}></Route>
 						<Route exact={true} path='/statistics' render={
 							defaultProps => <Statistics allMonthlyStats={this.state.allMonthlyStats}/>
@@ -86,9 +91,6 @@ class App extends Component {
 					else return monthStat
 				})
 			})
-
-			console.log(this.state.allMonthlyStats.find(monthStat => monthStat.month === updatedMonthlyStat.month))
-			console.log(this.state.allMonthlyStats, 'admitNew')
 
 		} catch(err) {
 			console.log(err)

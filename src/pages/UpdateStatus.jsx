@@ -25,7 +25,7 @@ export default withRouter(class UpdateStatus extends Component {
             status: this.state.status
         }
 
-        if(updatePatient.status === 'discharged') updatePatient.discharedOn = this.state.updateDate
+        if(updatePatient.status === 'discharged') updatePatient.dischargedOn = this.state.updateDate
         else if(updatePatient.status === 'died') updatePatient.diedOn = this.state.updateDate
 
         if(this.state.details) updatePatient.details = this.state.details
