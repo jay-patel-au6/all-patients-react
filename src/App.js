@@ -13,7 +13,8 @@ class App extends Component {
 	constructor() {
 		super()
 
-		this.server = `http://localhost:8080`
+		// this.server = `http://localhost:8080`
+		this.server = 'https://salty-escarpment-15457.herokuapp.com'
 
 		this.state = {}
 
