@@ -20,17 +20,28 @@ export default withRouter(class UpdateStatus extends Component {
 
         this.props.history.push('/')    // path to redirect after form submission
 
-        let updatePatient = {
-            id: this.props._id,
-            status: this.state.status
+        let admittedOn = new Date(this.props.admittedOn)
+        admittedOn.setMinutes(admittedOn.getMinutes()+330);
+
+        let updateDate = new Date(this.state.updateDate)
+        updateDate.setMinutes(updateDate.getMinutes()+1439);
+
+        if(admittedOn <= updateDate) {
+
+            let updatePatient = {
+                id: this.props._id,
+                status: this.state.status
+            }
+            
+            if(updatePatient.status === 'discharged') updatePatient.dischargedOn = this.state.updateDate
+            else if(updatePatient.status === 'died') updatePatient.diedOn = this.state.updateDate
+            
+            if(this.state.details) updatePatient.details = this.state.details
+            
+            this.props.onSubmit(updatePatient)
+        } else {
+            window.alert("Check the date, please!")
         }
-
-        if(updatePatient.status === 'discharged') updatePatient.dischargedOn = this.state.updateDate
-        else if(updatePatient.status === 'died') updatePatient.diedOn = this.state.updateDate
-
-        if(this.state.details) updatePatient.details = this.state.details
-
-        this.props.onSubmit(updatePatient)
 
     }
 

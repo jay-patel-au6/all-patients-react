@@ -44,8 +44,8 @@ class App extends Component {
 						<Route exact={true} path='/admitNew' render={
 							defaultProps => <AdmitNewForm onSubmit={this.handleAdmitNew}/>
 						}></Route>
-						<Route exact={true} path='/updateStatus/:patientId' render={
-							defaultProps =>	<UpdateStatus _id={defaultProps.match.params.patientId} onSubmit={this.handleUpdate}/>
+						<Route exact={true} path='/updateStatus/:patientId/:admittedOn' render={
+							defaultProps =>	<UpdateStatus _id={defaultProps.match.params.patientId} admittedOn={defaultProps.match.params.admittedOn} onSubmit={this.handleUpdate}/>
 						}></Route>
 						<Redirect to='/'/>
 					</Switch>
