@@ -13,8 +13,8 @@ class App extends Component {
 	constructor() {
 		super()
 
-		// this.server = `http://localhost:8080`
-		this.server = 'https://salty-escarpment-15457.herokuapp.com'
+		this.server = `http://localhost:8080`
+		// this.server = 'https://salty-escarpment-15457.herokuapp.com'
 
 		this.state = {}
 
@@ -45,8 +45,8 @@ class App extends Component {
 						<Route exact={true} path='/admitNew' render={
 							defaultProps => <AdmitNewForm onSubmit={this.handleAdmitNew}/>
 						}></Route>
-						<Route exact={true} path='/updateStatus/:patientId/:admittedOn' render={
-							defaultProps =>	<UpdateStatus _id={defaultProps.match.params.patientId} admittedOn={defaultProps.match.params.admittedOn} onSubmit={this.handleUpdate}/>
+						<Route exact={true} path='/updateStatus/:patientId/:name/:admittedOn' render={
+							defaultProps =>	<UpdateStatus _id={defaultProps.match.params.patientId} name={defaultProps.match.params.name} admittedOn={defaultProps.match.params.admittedOn} onSubmit={this.handleUpdate}/>
 						}></Route>
 						<Redirect to='/'/>
 					</Switch>

@@ -33,7 +33,7 @@ export default class Home extends Component {
                                         {patient.admittedOn ? <p>Admitted on {(new Date(patient.admittedOn)).toDateString() + ' at ' + (new Date(patient.admittedOn)).toLocaleTimeString()}</p> : <></>}
                                         {patient.disease ? <h4>Disease: {patient.disease}</h4> : <></>}
                                         {patient.description ? <p>Description: {patient.description}</p> : <></>}
-                                        <Link to={'/updateStatus/' + patient._id + '/' + patient.admittedOn}><Button className='btn btn-secondary' val='Update'></Button></Link>
+                                        <Link to={'/updateStatus/' + patient._id + '/' + patient.name + '/' + patient.admittedOn}><Button className='btn btn-secondary' val='Update'></Button></Link>
                                     </Patient>
                                 )
                             }

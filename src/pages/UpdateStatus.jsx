@@ -53,6 +53,7 @@ export default withRouter(class UpdateStatus extends Component {
         return (
             <div className='div-flex'>
                 <Form onSubmit={this.handleSubmit} formTitle='Update a patient'>
+                    <p>Name: <strong>{this.props.name}</strong></p>
                     <Select id='status' name='status' labelVal='Status: ' required={true} options={['', 'Discharged', 'Died']} onChange={this.handleChange} inputVal={this.state.status}/>
                     <Input id='updateDate' name='updateDate' type='date' labelVal='Date: ' required={true} onChange={this.handleChange} inputVal={this.state.updateDate}/>
                     <Input id='details' type='text' name='details' labelVal='Details: ' onChange={this.handleChange} inputVal={this.state.details}/>
