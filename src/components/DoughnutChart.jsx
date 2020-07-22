@@ -22,13 +22,13 @@ export default class DoughnutChart extends Component {
 			subtitles: [{
 				text: recovery,
 				verticalAlign: "center",
-				fontSize: 24,
+				fontSize: 20,
 				dockInsidePlotArea: true
 			}],
 			data: [{
 				type: "doughnut",
 				showInLegend: true,
-				indexLabel: "{name}: {y}",
+				indexLabel: "{y}",
 				yValueFormatString: "#,###",
 				dataPoints: dataPoints
 			}]

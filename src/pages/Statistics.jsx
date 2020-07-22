@@ -33,7 +33,13 @@ export default class Statistics extends Component {
                 <div className='Statistics'>
                     <h1>Statistics</h1>
                     <Select id='month' name='month' labelVal='Select a Month: ' onChange={this.handleChange} options={monthsList} inputVal={this.state.month}/>
-                    {doughnutChartData ? <DoughnutChart data={doughnutChartData}/> : <></>}
+                    {doughnutChartData ? (
+                        <>
+                        <DoughnutChart data={doughnutChartData}/>
+                        <br/>
+                        <h4>Total patients admitted in the month: {doughnutChartData.total}</h4>
+                        </>
+                    ) : <></>}
                 </div>
             )
         } else return <p>Loading...</p>
@@ -53,12 +59,11 @@ export default class Statistics extends Component {
         if(discharged || died) recovery = (Number(discharged || 0) / (Number(discharged || 0) + Number(died || 0)) * 100).toFixed(0) + '% Recovery'
 
         let dataPoints = [
-            {name: 'Total', y: total},
+            // {name: 'Total', y: total},
+            {name: 'Curing', y: (total) - (discharged || 0) - (died || 0)},
             {name: 'Died', y: died || 0},
             {name: 'Cured', y: discharged || 0},
-            {name: 'Curing', y: (total) - (discharged || 0) - (died || 0)}
         ]
-
-        return {month: month.toUpperCase(), recovery, dataPoints}
+        return {month: month.toUpperCase(), recovery, dataPoints, total}
     }
 }
